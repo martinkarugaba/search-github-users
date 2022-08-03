@@ -9,7 +9,7 @@ const rootUrl = "https://api.github.com";
 const GithubContext = React.createContext();
 
 const initialState = {
-  gitHubUser: mockUser,
+  githubUser: mockUser,
   repos: mockRepos,
   followers: mockFollowers,
 };
