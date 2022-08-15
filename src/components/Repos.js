@@ -54,13 +54,45 @@ const Repos = () => {
     .sort((a, b) => b.stars - a.stars)
     .map((item) => {
       return { ...item, value: item.stars };
-    }).slice(0,5);
+    })
+    .slice(0, 5);
 
   console.log('mostPopular', mostPopular);
 
+  // stars, forks
+  let { stars, forks } = repos.reduce(
+    (result, item) => {
+      const { stargazers_count, forks, name } = item;
+      result.stars[stargazers_count] = {
+        label: name,
+        value: stargazers_count,
+      };
+
+      result.forks[forks] = { label: name, value: forks };
+
+      return result;
+    },
+    {
+      stars: {},
+      forks: {},
+    }
+  );
+
+  console.log(stars);
+
+  // turn stars object into an array
+  // grab the last five values - they are the largest, no need to sort
+  // reverse the array
+  stars = Object.values(stars).slice(-5).reverse();
+  forks = Object.values(forks).slice(-5).reverse();
+
+  console.log(stars);
+  console.log(forks);
+
+
   const chartData = [
     { label: 'HTML', value: '13' },
-    { label: 'CSS', value: '23' },
+    { label: 'CSS', value: '160' },
     { label: 'JavaScript', value: '80' },
   ];
 
@@ -68,9 +100,9 @@ const Repos = () => {
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D data={mostUsed} />
-        <div></div>
+        <Column3D data={stars} />
         <Doughnut2D data={mostPopular} />
-        <div></div>
+        <Bar3D data={forks} />
       </Wrapper>
     </section>
   );

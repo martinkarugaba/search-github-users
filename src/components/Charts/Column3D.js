@@ -16,9 +16,11 @@ const ChartComponent = ({ data }) => {
     dataFormat: 'json',
     dataSource: {
       chart: {
-        caption: 'Most Popular',
+        caption: 'Most Popular Repo',
         yAxisName: 'Stars',
         xAxisName: 'Repos',
+        xAxisNameFontSize: '16px',
+        yAxisNameFontSize: '16px',
       },
       // Chart Data
       data,
