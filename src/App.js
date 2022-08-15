@@ -12,12 +12,12 @@ import {
   Route,
 } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Switch>
         <Route path="/" exact={true}>
-          <Dashboard />
+          <Dashboard /> 
         </Route>
         <Route path="/login">
           <Login />
