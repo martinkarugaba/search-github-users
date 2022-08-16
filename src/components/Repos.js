@@ -35,7 +35,7 @@ const Repos = () => {
     return total;
   }, {});
 
-  console.log(languages);
+  //console.log(languages);
 
   // turn languages object into an array
   // sort languages from highest to lowest
@@ -44,7 +44,7 @@ const Repos = () => {
     .sort((a, b) => b.value - a.value)
     .slice(0, 5);
 
-  console.log('mostUsed', mostUsed);
+  //console.log('mostUsed', mostUsed);
 
   // most stars per language
   // sort the arrau based on the number of stars
@@ -57,7 +57,7 @@ const Repos = () => {
     })
     .slice(0, 5);
 
-  console.log('mostPopular', mostPopular);
+  //console.log('mostPopular', mostPopular);
 
   // stars, forks
   let { stars, forks } = repos.reduce(
@@ -78,7 +78,7 @@ const Repos = () => {
     }
   );
 
-  console.log(stars);
+  //console.log(stars);
 
   // turn stars object into an array
   // grab the last five values - they are the largest, no need to sort
@@ -86,8 +86,8 @@ const Repos = () => {
   stars = Object.values(stars).slice(-5).reverse();
   forks = Object.values(forks).slice(-5).reverse();
 
-  console.log(stars);
-  console.log(forks);
+  //console.log(stars);
+  //console.log(forks);
 
 
   const chartData = [
