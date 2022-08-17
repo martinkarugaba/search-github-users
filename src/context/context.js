@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import mockUser from './mockData.js/mockUser';
 import mockRepos from './mockData.js/mockRepos';
 import mockFollowers from './mockData.js/mockFollowers';
@@ -11,6 +11,8 @@ import {
   SET_GITHUB_USER,
   SET_SEARCH_ERROR,
   RESET_ERROR,
+  SET_REPOS,
+  SET_FOLLOWERS,
 } from './actions';
 import reducer from './reducer';
 
@@ -36,24 +38,26 @@ const GithubProvider = ({ children }) => {
     const response = await axios(`${rootUrl}/users/${user}`).catch(
       (error) => console.log(error)
     );
-    console.log(response);
+
     if (response) {
       dispatch({ type: SET_GITHUB_USER, payload: response.data });
       console.log(response.data);
       const { login, followers_url } = response.data;
-
       // fetch repos
       axios(`${rootUrl}/users/${login}/repos?per_page=100`).then(
-        (res) => console.log('repos', res)
+        (response) => {
+          dispatch({
+            type: SET_REPOS,
+            payload: response.data,
+          });
+          //console.log('Repos', response.data);
+        }
       );
-
       // fetch followers
-      axios(`${followers_url}?per_page=100`).then(
-        (res) => console.log('repos', res)
-      );
-
-      //(https://api.github.com/users/john-smilga/repos?per_page=100)
-      //https://api.github.com/users/john-smilga/followers)
+      axios(`${followers_url}?per_page=100`).then((response) => {
+        dispatch({ type: SET_FOLLOWERS, payload: response.data });
+        //console.log('Followers', response.data);
+      });
     } else {
       dispatch({ type: SET_SEARCH_ERROR });
     }

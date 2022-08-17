@@ -6,6 +6,8 @@ import {
   SET_LOADING,
   STOP_LOADING,
   RESET_ERROR,
+  SET_REPOS,
+  SET_FOLLOWERS,
 } from './actions';
 
 const reducer = (state, action) => {
@@ -21,7 +23,7 @@ const reducer = (state, action) => {
         },
       };
     case SET_GITHUB_USER:
-      return { ...state, gitHubUser: action.payload };
+      return { ...state, githubUser: action.payload };
     case SET_SEARCH_ERROR:
       return {
         ...state,
@@ -36,6 +38,10 @@ const reducer = (state, action) => {
       return { ...state, isLoading: true };
     case STOP_LOADING:
       return { ...state, isLoading: false };
+    case SET_REPOS:
+      return { ...state, repos: action.payload };
+    case SET_FOLLOWERS:
+      return { ...state, followers: action.payload };
 
     default:
       break;
