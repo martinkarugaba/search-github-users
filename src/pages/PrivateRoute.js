@@ -6,10 +6,12 @@ const PrivateRoute = ({children}) => {
   const { isAuthenticated, user } = useAuth0();
   const isUser = isAuthenticated && user;
 
-  if (!isUser) {
-    <Navigate to="/login" />;
-  }
-  return children;
+  //if (!isUser) {
+  //  <Navigate to="/login" />;
+  //}
+  //return children;
+
+  return isUser ? children : <Navigate to="/login" />
 };
 
 export default PrivateRoute;
