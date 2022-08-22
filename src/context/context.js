@@ -71,7 +71,7 @@ const GithubProvider = ({ children }) => {
         let {
           rate: { remaining },
         } = data;
-        console.log(remaining);
+        //console.log(remaining);
         dispatch({ type: SET_REQUESTS, payload: remaining });
         if (remaining === 0) {
           dispatch({ type: SET_ERROR });
