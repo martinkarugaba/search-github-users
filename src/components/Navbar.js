@@ -57,7 +57,6 @@ const Wrapper = styled.nav`
   gap: 1.5rem;
   
   h4 {
-    margin-bottom: 0;
     font-weight: 400;
   }
   img {
