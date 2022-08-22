@@ -181,3 +181,14 @@ p {
 main {
   padding-bottom: 2rem;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*align-items: center;*/
+}
+
+.container .btn{
+  padding: .7rem 1.5rem;
+}
