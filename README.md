@@ -1,3 +1,3 @@
 # Search Github Users
 
-- This project is hosted here: mksearchgithubusers.netlify.app
+- This project is hosted here: https:\\mksearchgithubusers.netlify.app
